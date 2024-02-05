@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+
+  database:
+      build:
+        context: ./bd
+      networks:
+        - ops-network
+
+  backend:
+    build:
+      context: ./java/simple-api-student-main
+    networks:
+      - ops-network
+    depends_on:
+      - database
+
+  httpd:
+    build:
+      context: ./http
+    ports:
+      - "80:80"
+    networks:
+      - ops-network
+    depends_on:
+      - backend
+
+networks:
+  ops-network:
+    external: true
+    
