@@ -21,5 +21,4 @@ jobs:
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-      - run: cd java/simple-api-student-main
-      - run: mvn clean verify
+      - run: mvn clean verify --file java/simple-api-student-main
