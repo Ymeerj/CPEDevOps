@@ -21,8 +21,10 @@ jobs:
           java-version: '17'
 
      #finally build your app with the latest command
-      - name: Build and test with Maven
-        run: mvn clean verify --file java/simple-api-student-main
+      - name: Test build with sonar
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=Ymeerj_CPEDevOps -Dsonar.organization=ymeerj -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./java/simple-api-student-main/pom.xml 
+      # - name: Build and test with Maven
+      #   run: mvn clean verify --file java/simple-api-student-main
 
   # define job to build and publish docker image
   build-and-push-docker-image:
