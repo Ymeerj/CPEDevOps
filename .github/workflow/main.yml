@@ -14,8 +14,9 @@ jobs:
 
      #do the same with another action (actions/setup-java@v3) that enable to setup jdk 17
       - name: Set up JDK 17
-      - uses: actions/setup-java@v3
+        uses: actions/setup-java@v3
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-        run: cd java/simple-api-student-main && mvn clean verify
+      - run: cd java/simple-api-student-main
+      - run: mvn clean verify
