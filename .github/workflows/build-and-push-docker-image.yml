@@ -30,7 +30,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./java/simple-api-student-main
           # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKERHUB_USERNAME}}/opsapi:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/opsapi:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -40,7 +40,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./bd
           # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKERHUB_USERNAME}}/mybd:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/mybd:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -50,8 +50,16 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./http
           # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKERHUB_USERNAME}}/opshttp:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/opshttp:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
-      
+      - name: Build image and push front
+        uses: docker/build-push-action@v3
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./front
+          # Note: tags has to be all lower-case
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/opsfront:latest
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
