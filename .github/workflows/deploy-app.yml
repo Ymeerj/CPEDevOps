@@ -25,5 +25,6 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v2
         with:
           playbook: ansible/playbook.yml
+          key: ${{secrets.ANSIBLE_TOKEN}}
           options: |
             --inventory ansible/inventories/setup.yml
