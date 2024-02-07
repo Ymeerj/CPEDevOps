@@ -18,6 +18,9 @@ jobs:
 
     # steps to perform in job
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.5.0
+
       - name: run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
