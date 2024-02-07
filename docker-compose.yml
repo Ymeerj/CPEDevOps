@@ -35,6 +35,11 @@ services:
     depends_on:
       - opsapi
 
+  front:
+    image: jeremydp/opsfront:latest
+    networks:
+      - ops-network
+
 networks:
   ops-network:
     external: true
