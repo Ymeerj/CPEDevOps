@@ -11,7 +11,7 @@ on:
 
 jobs:
   # define job to build and publish docker image
-  build-and-push-docker-image:
+  deploy-app:
     # run only when code is compiling and tests are passing
     runs-on: ubuntu-22.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
@@ -28,4 +28,4 @@ jobs:
           key: ${{secrets.ANSIBLE_TOKEN}}
           options: |
             --inventory ansible/inventories/setup.yml
-            --extra-vars "ansible_user=${{secrets.ANSIBLE_USER}} host=${{secrets.ANSIBLE_HOST}}"
+            --extra-vars "@vault.yml"
