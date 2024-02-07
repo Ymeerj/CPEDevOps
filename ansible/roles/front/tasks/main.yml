@@ -1,2 +1,2 @@
----
-# tasks file for roles/front
+- name: Install front
+  import_tasks: ./run-front.yml
