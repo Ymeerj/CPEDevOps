@@ -2,6 +2,8 @@
   community.docker.docker_container:
     name: http
     image: jeremydp/opshttp:latest
+    pull: true
+    recreate: true
     networks:
       - name: ops-network
     ports:

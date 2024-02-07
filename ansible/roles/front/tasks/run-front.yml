@@ -2,6 +2,8 @@
   community.docker.docker_container:
     name: front
     image: jeremydp/opsfront:latest
+    pull: true
+    recreate: true
     networks:
       - name: ops-network
   vars:
