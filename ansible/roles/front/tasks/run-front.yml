@@ -1,0 +1,8 @@
+- name: Run container
+  community.docker.docker_container:
+    name: front
+    image: jeremydp/opsfront:latest
+    networks:
+      - name: ops-network
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
