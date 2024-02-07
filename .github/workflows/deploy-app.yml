@@ -29,4 +29,4 @@ jobs:
           vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}
           options: |
             --inventory ansible/inventories/setup.yml
-            --extra-vars "@vault.yml"
+            --extra-vars "@ansible/vault.yml"
