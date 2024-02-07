@@ -5,7 +5,7 @@ on:
     types:
       - completed
     workflows:
-      - "CI devops 2023 - test"
+      - "CI devops 2023 - deploy"
     branches:
       - main
 
