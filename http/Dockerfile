@@ -4,8 +4,8 @@ COPY ./src /usr/local/apache2/htdocs
 
 RUN echo '<VirtualHost *:80> \n\
   ProxyPreserveHost On \n\
-  ProxyPass /api http://opsapi:8080/ \n\
-  ProxyPassReverse /api http://opsapi:8080/ \n\
+  ProxyPass /api/ http://opsapi:8080/ \n\
+  ProxyPassReverse /api/ http://opsapi:8080/ \n\
   ProxyPass / http://front:80/ \n\
   ProxyPassReverse / http://front:80/ \n\
   </VirtualHost> \n\
