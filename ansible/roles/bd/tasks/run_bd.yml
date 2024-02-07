@@ -1,0 +1,14 @@
+- name: Run container
+  community.docker.docker_container:
+    name: database
+    image: jeremydp/mybd:latest
+    env:
+      POSTGRES_PASSWORD: "pwd"
+      POSTGRES_USER: "usr"
+      POSTGRES_DB: "db"
+    networks:
+      - name: ops-network
+    volumes:
+      - /var/lib/postgresql/data
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

@@ -1,0 +1,10 @@
+- name: Run container
+  community.docker.docker_container:
+    name: http
+    image: jeremydp/opshttp:latest
+    networks:
+      - name: ops-network
+    ports:
+      - "80:80"
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

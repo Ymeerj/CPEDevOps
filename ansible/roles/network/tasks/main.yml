@@ -1,0 +1,2 @@
+- name: Create network
+  import_tasks: ./create-network.yml

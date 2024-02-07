@@ -1,0 +1,13 @@
+- name: Run container
+  community.docker.docker_container:
+    name: opsapi
+    image: jeremydp/opsapi:latest
+    env:
+      POSTGRES_PASSWORD: "pwd"
+      POSTGRES_USER: "usr"
+      POSTGRES_DB: "db"
+      POSTGRES_HOST: "database"
+    networks:
+      - name: ops-network
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

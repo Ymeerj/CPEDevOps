@@ -1,0 +1,25 @@
+name: CI devops 2023 - deploy website
+on:
+  #to begin you want to launch this job in main and develop
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - "CI devops 2023 - deploy"
+    branches:
+      - main
+
+jobs:
+  # define job to build and publish docker image
+  build-and-push-docker-image:
+    # run only when code is compiling and tests are passing
+    runs-on: ubuntu-22.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    # steps to perform in job
+    steps:
+      - name: run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: ansible/playbook.yml
+          directory: ansible
