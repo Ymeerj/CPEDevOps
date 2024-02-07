@@ -26,6 +26,7 @@ jobs:
         with:
           playbook: ansible/playbook.yml
           key: ${{secrets.ANSIBLE_TOKEN}}
+          vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}
           options: |
             --inventory ansible/inventories/setup.yml
             --extra-vars "@vault.yml"
