@@ -28,3 +28,4 @@ jobs:
           key: ${{secrets.ANSIBLE_TOKEN}}
           options: |
             --inventory ansible/inventories/setup.yml
+            --extra-vars ansible_user=centos host=jeremy.deplace.takima.cloud

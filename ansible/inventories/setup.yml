@@ -1,6 +1,6 @@
 all:
   vars:
-    ansible_user: centos
+    ansible_user: "{{ ansible_user }}"
   children:
     prod:
-      hosts: jeremy.deplace.takima.cloud
+      hosts: "{{host}}"
