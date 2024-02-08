@@ -16,5 +16,5 @@ RUN echo '<VirtualHost *:80> \n\
   LoadModule proxy_module modules/mod_proxy.so \n\
   LoadModule proxy_http_module modules/mod_proxy_http.so \n\
   LoadModule proxy_balancer_module modules/mod_proxy_balancer.so \n\
-  LoadModule lbmethod_byrequests_module modules/lbmethod_byrequests_module.so \n\
+  LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so \n\
   ' >> /usr/local/apache2/conf/httpd.conf
