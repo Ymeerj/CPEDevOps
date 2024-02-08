@@ -12,8 +12,9 @@ RUN echo '<VirtualHost *:80> \n\
   BalancerMember http://ospapi1:8080 route=backend1 \n\
   BalancerMember http://posapi2:8080 route=backend2 \n\
   </Proxy> \n\
-  LoadModule proxy_module modules/mod_proxy.so \n\
   </VirtualHost> \n\
+  LoadModule proxy_module modules/mod_proxy.so \n\
   LoadModule proxy_http_module modules/mod_proxy_http.so \n\
   LoadModule proxy_balancer_module modules/mod_proxy_balancer.so \n\
+  LoadModule lbmethod_byrequests_module modules/lbmethod_byrequests_module.so \n\
   ' >> /usr/local/apache2/conf/httpd.conf
