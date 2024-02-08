@@ -1,6 +1,22 @@
-- name: Run container
+- name: Run container 1
   community.docker.docker_container:
-    name: opsapi
+    name: opsapi1
+    image: jeremydp/opsapi:latest
+    pull: true
+    recreate: true
+    env:
+      POSTGRES_PASSWORD: "{{POSTGRES_PASSWORD}}"
+      POSTGRES_USER: "{{POSTGRES_USER}}"
+      POSTGRES_DB: "{{POSTGRES_DB}}"
+      POSTGRES_HOST: "{{POSTGRES_HOST}}"
+    networks:
+      - name: ops-network
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+- name: Run container 2
+  community.docker.docker_container:
+    name: opsapi2
     image: jeremydp/opsapi:latest
     pull: true
     recreate: true
