@@ -18,7 +18,6 @@
   community.docker.docker_container:
     name: opsapi2
     image: jeremydp/opsapi:latest
-    pull: true
     recreate: true
     env:
       POSTGRES_PASSWORD: "{{POSTGRES_PASSWORD}}"
