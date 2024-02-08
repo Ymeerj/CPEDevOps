@@ -9,8 +9,8 @@ RUN echo '<VirtualHost *:80> \n\
   ProxyPass / http://front:80/ \n\
   ProxyPassReverse / http://front:80/ \n\
   <Proxy balancer://opsapi> \n\
-  BalancerMember http://ospapi1:8080 route=backend1 \n\
-  BalancerMember http://posapi2:8080 route=backend2 \n\
+  BalancerMember http://opsapi1:8080 route=backend1 \n\
+  BalancerMember http://opsapi2:8080 route=backend2 \n\
   </Proxy> \n\
   </VirtualHost> \n\
   LoadModule proxy_module modules/mod_proxy.so \n\
