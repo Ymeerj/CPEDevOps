@@ -1,3 +1,23 @@
+# TP de DevOps
+
+Ce projet est le résultat de suivi du TP suivant : [text](http://school.pages.takima.io/devops-resources/)
+
+Les points du TP sont les suivants:
+
+- Utilisation de docker pour la conteneurisation de parties d'une application
+- Mise en place de github actions pour l'automatisation de la publication des images docker ainsi que du déploiement de l'application
+- Utilisation d'Ansible pour le déploiement de l'application
+
+
+Le projet est divisé en cinq parties:
+
+- database postgres
+- API Java Spring
+- Reverse Proxy avec load balancing HTTP Apache 
+- Front en VueJS
+- Ansible pour le déploiement
+
+
 # Partie 1 - Docker
 
 ## Docker de base de données:
