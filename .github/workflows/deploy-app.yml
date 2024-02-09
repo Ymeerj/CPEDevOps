@@ -1,6 +1,7 @@
+#deploy-app.yml
 name: CI devops 2023 - deploy website
 on:
-  #to begin you want to launch this job in main and develop
+  # Ce workflow s'exécute lors d'une execution complète du workflow "CI devops 2023 - deploy"
   workflow_run:
     types:
       - completed
@@ -10,23 +11,24 @@ on:
       - main
 
 jobs:
-  # define job to build and publish docker image
   deploy-app:
-    # run only when code is compiling and tests are passing
-    runs-on: ubuntu-22.04
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-22.04 #Environnement du workflow
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} # S'éxecute uniquement si le workflow "CI devops 2023 - deploy" s'est soldé par un succès
 
-    # steps to perform in job
     steps:
+      #Checkout du code pour le workflow
       - name: Checkout code
         uses: actions/checkout@v2.5.0
 
+      #Execution du playbook présent dans ./ansible pour le déploiement de l'application
       - name: run playbook
-        uses: dawidd6/action-ansible-playbook@v2
+        uses: dawidd6/action-ansible-playbook@v2 # Action utilisé, permet l'éxecution de playbook yml
         with:
-          playbook: ansible/playbook.yml
-          key: ${{secrets.ANSIBLE_TOKEN}}
-          vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}}
+          playbook: ansible/playbook.yml # Chemin vers le playbook
+          key: ${{secrets.ANSIBLE_TOKEN}} # Clé SSH utilisé
+          vault_password: ${{secrets.ANSIBLE_VAULT_PASSWORD}} #Mot de passe du vault utilisé
+          #options : --inventory Chemin vers l'inventaire Ansible utilisé
+          #          --extra-vars Chemin vers le vault contenant les variables nécessaires au déploiement de l'application
           options: |
             --inventory ansible/inventories/setup.yml
             --extra-vars "@ansible/vault.yml"

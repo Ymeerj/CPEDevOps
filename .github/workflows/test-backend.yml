@@ -1,5 +1,6 @@
+#test-backend.yml
 name: CI devops 2023 - test
-on:
+on: #Cet action est la première a s'exécuter, elle s'execute lors de push sur les branches main et develop
   #to begin you want to launch this job in main and develop
   push:
     branches:
@@ -8,22 +9,20 @@ on:
 
 jobs:
   test-backend:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04 #Environnement sur lequel l'action est exécuté
     steps:
-      #checkout your github code using actions/checkout@v2.5.0
-      - uses: actions/checkout@v2.5.0
+      #checkout your github code using actions/checkout@v2.5.0. L'action permet de checkout notre répo pour que l'action puisse l'utiliser
+      - uses: actions/checkout@v2.5.0 # Action utilisé
 
-      #do the same with another action (actions/setup-java@v3) that enable to setup jdk 17
+      # Etape d'initialisation de JDK 17
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: "zulu" # See 'Supported distributions' for available options
-          java-version: "17"
+        uses: actions/setup-java@v3 #Action utilisé
+        with: # Arguments passés à l'action
+          distribution: "zulu" # Distribution Java utilisé
+          java-version: "17" # Argument passé à l'action définissant la version de java
 
-      #finally build your app with the latest command
-      # - name: Test build with sonar
-      #   run: mvn -B verify sonar:sonar -Dsonar.projectKey=Ymeerj_CPEDevOps -Dsonar.organization=ymeerj -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./java/simple-api-student-main/pom.xml
+      # Etape de test de l'application avec sonar
+      - name: Test build with sonar
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=Ymeerj_CPEDevOps -Dsonar.organization=ymeerj -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./java/simple-api-student-main/pom.xml
       # - name: Build and test with Maven
       #   run: mvn clean verify --file java/simple-api-student-main
-
-  # define job to build and publish docker image

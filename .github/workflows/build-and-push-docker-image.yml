@@ -1,6 +1,7 @@
+#build-and-push-docker-image
 name: CI devops 2023 - deploy
 on:
-  #to begin you want to launch this job in main and develop
+  #Le workflow s'éxécute en cas de succès du workflow "CI devops 2023 - test"
   workflow_run:
     types:
       - completed
@@ -10,11 +11,10 @@ on:
       - main
 
 jobs:
-  # define job to build and publish docker image
   build-and-push-docker-image:
     # run only when code is compiling and tests are passing
     runs-on: ubuntu-22.04
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} #Ne s'exécute qu'en cas de succès du workflow précédent
 
     # steps to perform in job
     steps:
